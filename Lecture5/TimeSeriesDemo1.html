@@ -1,0 +1,920 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>/* Fonts */
+@font-face{
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face{
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+/* Body */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body{
+  color:#4d4d4c;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:12px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #f8f8f8;
+}
+
+/* Links */
+a{ color: #06d; text-decoration:none; }
+a:hover{ color: #06e; text-decoration: underline; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+
+::-moz-selection { background:#a8d1ff; color:#000 }
+::selection { background:#a8d1ff; color:#000 }
+
+a::-moz-selection { background:#a8d1ff; color:#0645ad }
+a::selection { background:#a8d1ff; color:#0645ad }
+
+/* Header Anchor Links*/
+.headeranchor-link {
+  color:#111;
+  border: 0;
+  margin-left: -20px;
+  padding-right: 6px;
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor-link:hover,
+.headeranchor-link:visited,
+.headeranchor-link:active
+{ text-decoration: none; color:#4d4d4c; }
+.headeranchor-link:hover .headeranchor:before,
+h1:hover .headeranchor:before,
+h2:hover .headeranchor:before,
+h3:hover .headeranchor:before,
+h4:hover .headeranchor:before,
+h5:hover .headeranchor:before,
+h6:hover .headeranchor:before
+{ content: '\f05c'; }
+
+abbr { cursor: pointer; }
+
+/* Paragraphs */
+p { margin:1em 0; }
+
+/* Images */
+img {
+  max-width:100%;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+/* Headers */
+h1,h2,h3,h4,h5,h6 {
+  font-weight:normal;
+  color:#111;
+  line-height: 1.7;
+  position: relative;
+}
+h4,h5,h6{ font-weight: bold; }
+h1 { font-size:2.5em; border-bottom: 1px solid #ddd;}
+h2 { font-size:2em; border-bottom:1px solid #eee; padding-bottom: 5px; }
+h3 { font-size:1.5em; }
+h4 { font-size:1.2em; }
+h5 { font-size:1em; }
+h6 { font-size:0.9em; }
+
+/* Block Quotes */
+blockquote {
+  color:#666666;
+  margin:0;
+  padding-left: 3em;
+  border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+
+/* Raw Blocks */
+pre, code, kbd, samp {
+  color: #000;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 0.88em;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC;
+}
+
+pre {
+  padding: 10px;
+  overflow: auto;
+}
+
+code { padding: 0 3px 0 3px; }
+pre code { border: 0; padding: 0; }
+
+/* Admonition */
+.admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 0.88em;
+  padding: 0.5em 1em 0.5em 1em;
+  margin: 10px auto;
+  color: #888888;
+  background-color: #F8F8F8;
+  border: 1px solid #888888;
+}
+
+.admonition p { padding: 0; margin: 0; }
+.admonition-title { font-weight: bold; margin: 0; }
+
+.admonition-icon {
+  font: normal normal 16px fontawesome-mini;
+  line-height: 1.5;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  float: left;
+}
+
+.admonition.attention { color: #4F8A10; background-color: #DFF2BF; border: 1px solid #4F8A10; }
+.admonition.caution { color: #D63301; background-color: #FFCCBA; border: 1px solid #D63301; }
+.admonition.hint { color: #00529B; background-color: #BDE5F8; border: 1px solid #00529B; }
+.admonition.danger { color: #D8000C; background-color: #FFBABA; border: 1px solid #D8000C; }
+.admonition.question { color: #00049b; background-color: #BDC8F8; border: 1px solid #00049b; }
+.admonition.note { color: #9F6000; background-color: #FEEFB3; border: 1px solid #9F6000; }
+
+.attention > .admonition-icon:before { content: "\f058\00a0"; }
+.caution > .admonition-icon:before { content: "\f06a\00a0"; }
+.hint > .admonition-icon:before { content: "\f05a\00a0"; }
+.danger > .admonition-icon:before { content: "\f056\00a0"; }
+.question > .admonition-icon:before { content: "\f059\00a0"; }
+.note > .admonition-icon:before { content: "\f040\00a0"; }
+
+/* progress bar*/
+.progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #F8F8F8;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow:
+    1px 1px 0px #fefefe,
+    -1px -1px 0px #fefefe,
+    -1px 1px 0px #fefefe,
+    1px -1px 0px #fefefe,
+    0px 1px 0px #fefefe,
+    0px -1px 0px #fefefe,
+    1px 0px 0px #fefefe,
+    -1px 0px 0px #fefefe,
+    1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 24px;
+  float: left;
+  border-right: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #34c2e3;
+  box-shadow: inset 0 1px 0px rgba(255, 255, 255, .5);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 53%, rgba(255, 255, 255, .4) 53%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.progress-100plus .progress-bar { background-color: #1ee038; }
+.progress-80plus .progress-bar { background-color: #86e01e; }
+.progress-60plus .progress-bar { background-color: #f2d31b; }
+.progress-40plus .progress-bar { background-color: #f2b01e; }
+.progress-20plus .progress-bar { background-color: #f27011; }
+.progress-0plus .progress-bar { background-color: #f63a0f; }
+
+.gloss .progress-bar {
+  box-shadow:
+    inset -1px 1px 0px rgba(255, 255, 255, .5),
+    inset 0 -4px 12px rgba(255, 255, 255, .7),
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0px rgba(0, 0, 0, .05),
+    inset 1px -1px 0px rgba(255, 255, 255, .2);
+}
+
+.candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes { 0% { background-position: 0 0; } 100% { background-position: 60px 0; } }
+@-moz-keyframes animate-stripes { 0% { background-position: 0 0; } 100% { background-position: 60px 0; } }
+@keyframes animate-stripes { 0% { background-position: 0 0; } 100% { background-position: 60px 0; } }
+
+/* Inlines */
+b, strong { font-weight: bold; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+dfn { font-style: italic; }
+
+/* Lists */
+ul, ol { padding-left: 30px; }
+li p:last-child { margin:0 }
+.task-list-item { list-style-type: none; }
+.task-list-item input { float:left; margin-left: -20px; margin-top: 6px; }
+dt { font-weight: bold; font-style: italic;}
+dd { margin: 0 0 0 2em; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; overflow-x: auto; overflow-y: hidden; display: block;}
+table tr { background-color: #fefefe; }
+table tr:nth-child(2n) { background-color: #f8f8f8; }
+td, th { border: 1px solid #ddd; padding: 6px 13px; }
+
+/* Codehilite Tables */
+.codehilitetable { border: 0; border-spacing: 0; }
+.linenos, .code, .codehilitetable td { border: 0; padding: 0; }
+td:not(.linenos) .linenodiv { padding: 0 !important; }
+.code { width: 100%; }
+.linenos div pre, .linenodiv pre {
+  border: 0;
+  border-top: 1px solid #CCC;
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.code div pre {
+  border: 0;
+  border-top: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  body{ font-size:14px; }
+}
+
+@media only screen and (min-width: 768px) {
+  body{ font-size:16px; }
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+  body{ font-size:12pt; max-width:100%; outline:none; border: 0;}
+  a, a:visited { text-decoration: underline; }
+  .headeranchor-link { display: none; }
+  hr { height: 1px; border:0; border-bottom:1px solid black; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+  pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+  .progress, .progress-bar { box-shadow: none; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style><title>TimeSeriesDemo1</title></head><body><h1 id="time-series-in-r"><a name="user-content-time-series-in-r" href="#time-series-in-r" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Time Series in R</h1>
+<h1 id="first-we-will-need-some-packages"><a name="user-content-first-we-will-need-some-packages" href="#first-we-will-need-some-packages" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>First we will need some packages</h1>
+<pre><code class="r">#knitr to make this doc
+library(knitr)
+#For an example dataset and well BVAR
+library(MSBVAR)
+</code></pre>
+
+<pre><code>## KernSmooth 2.23 loaded
+## Copyright M. P. Wand 1997-2009
+## ##
+## ## MSBVAR Package v.0.9-1
+## ## Build date:  Thu Oct  2 13:55:39 2014 
+## ## Copyright (C) 2005-2014, Patrick T. Brandt
+## ## Written by Patrick T. Brandt
+## ##
+## ## Support provided by the U.S. National Science Foundation
+## ## (Grants SES-0351179, SES-0351205, SES-0540816, and SES-0921051)
+## ##
+</code></pre>
+
+<pre><code class="r">#For pipes
+library(magrittr)
+</code></pre>
+
+<h1 id="working-with-time-series-data"><a name="user-content-working-with-time-series-data" href="#working-with-time-series-data" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Working with Time Series Data</h1>
+<p>If you have a few values, <strong><em>R</em></strong>, does not know it is a time series, if you do not tell it so.</p>
+<pre><code class="r">nots &lt;- c(2,6,4,7,1,9,10,7,6,3)
+plot(nots)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-2" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-2.png" /> <br />
+So, use the ts function:</p>
+<pre><code class="r">yests&lt;-ts(nots, start=1, frequency=1)
+plot(yests)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-3" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-3.png" /> </p>
+<p><code>start</code> tells it when to start, <code>frequency</code> says how many observations per time chunk you have. For example, if you had annual data that started in 1950, you would set start=1, and frequency=1. If you had quarterly data that started in the second quarter of 1960, you would set start=c(1960,1), and frequency=4. Think about what this says? Note that <code>time</code> just prints out observations you have based on <code>ts</code>.</p>
+<pre><code class="r">newts &lt;- ts(nots, start=c(2013,9), frequency=12)
+time(newts)
+</code></pre>
+
+<pre><code>##       Jan  Feb  Mar  Apr  May  Jun Jul Aug  Sep  Oct  Nov  Dec
+## 2013                                       2014 2014 2014 2014
+## 2014 2014 2014 2014 2014 2014 2014
+</code></pre>
+
+<p>If you want a dataframe with more than one time series, for example, <code>x</code> and <code>B.x</code> or <code>D.x</code>, use <code>ts.intersect</code>, it aligns the dates smartly, and trims missings. <code>dframe=TRUE</code> takes away the time  stamp and frequency meta-data but makes it easier to work with when integrating with other dataframes. Can also use <code>cbind()</code></p>
+<pre><code class="r">newts
+</code></pre>
+
+<pre><code>##      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+## 2013                                   2   6   4   7
+## 2014   1   9  10   7   6   3
+</code></pre>
+
+<pre><code class="r">newtsdf &lt;- ts.intersect(newts, lagnewts=lag(newts,k=-1), diffnewts=diff(newts), dframe=TRUE)
+newtsdf
+</code></pre>
+
+<pre><code>##   newts lagnewts diffnewts
+## 1     6        2         4
+## 2     4        6        -2
+## 3     7        4         3
+## 4     1        7        -6
+## 5     9        1         8
+## 6    10        9         1
+## 7     7       10        -3
+## 8     6        7        -1
+## 9     3        6        -3
+</code></pre>
+
+<pre><code class="r">cbindts&lt;-cbind(newts,lag(newts,k=-1),diff(newts))
+cbindts
+</code></pre>
+
+<pre><code>##          newts lag(newts, k = -1) diff(newts)
+## Sep 2013     2                 NA          NA
+## Oct 2013     6                  2           4
+## Nov 2013     4                  6          -2
+## Dec 2013     7                  4           3
+## Jan 2014     1                  7          -6
+## Feb 2014     9                  1           8
+## Mar 2014    10                  9           1
+## Apr 2014     7                 10          -3
+## May 2014     6                  7          -1
+## Jun 2014     3                  6          -3
+## Jul 2014    NA                  3          NA
+</code></pre>
+
+<p>Note the <code>k=-1</code>, if you do this (see next code chunk), you might not be getting what you want:</p>
+<pre><code class="r">badtsdf &lt;- ts.intersect(newts, lagnewts=lag(newts), diffnewts=diff(newts))
+badtsdf
+</code></pre>
+
+<pre><code>##          newts lagnewts diffnewts
+## Oct 2013     6        4         4
+## Nov 2013     4        7        -2
+## Dec 2013     7        1         3
+## Jan 2014     1        9        -6
+## Feb 2014     9       10         8
+## Mar 2014    10        7         1
+## Apr 2014     7        6        -3
+## May 2014     6        3        -1
+</code></pre>
+
+<p>Note that the package <strong><em>dplyr</em></strong>, which is terrific, has its own <code>lag()</code> function that reverses this (k=1, is n=-1). This code here is for the base-install included <strong><em>stats</em></strong> package. </p>
+<p>For differencing twice, you do not do <code>diff(newts, 2)</code>, but instead <code>diff(diff(newts))</code> or <code>diff(newts, order=2</code>.</p>
+<pre><code class="r">difftsdf&lt;-ts.intersect(newts, diff1ts=diff(newts), difflag2ts=diff(newts,lag=2),diffdiffts=diff(diff(newts)))
+difftsdf
+</code></pre>
+
+<pre><code>##          newts diff1ts difflag2ts diffdiffts
+## Nov 2013     4      -2          2         -6
+## Dec 2013     7       3          1          5
+## Jan 2014     1      -6         -3         -9
+## Feb 2014     9       8          2         14
+## Mar 2014    10       1          9         -7
+## Apr 2014     7      -3         -2         -4
+## May 2014     6      -1         -4          2
+## Jun 2014     3      -3         -4         -2
+</code></pre>
+
+<p>If you only want a subset of the time periods you have, use <code>window()</code></p>
+<pre><code class="r">smallerts &lt;- window(newts, start=c(2013,11), end=c(2014,3))
+smallerts
+</code></pre>
+
+<pre><code>##      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+## 2013                                           4   7
+## 2014   1   9  10
+</code></pre>
+
+<h1 id="diagnosing-time-series-simulated-examples"><a name="user-content-diagnosing-time-series-simulated-examples" href="#diagnosing-time-series-simulated-examples" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Diagnosing Time Series (Simulated Examples)</h1>
+<p>Set a random seed so we can generate the same data</p>
+<pre><code class="r">set.seed(123456789)
+</code></pre>
+
+<p>We can simulate an AR(1) with $\phi=.9$</p>
+<pre><code class="r">x &lt;- arima.sim(list(order=c(1,0,0), ar=.9),n=500)
+plot.ts(x, main=expression(paste(&quot;AR(1), &quot; , phi, &quot;=.9&quot;)))
+abline(h=0)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-10" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-10.png" /> </p>
+<p>Now lets look at an ACF</p>
+<pre><code class="r">acf(x)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-11" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-11.png" /> </p>
+<p>and the pacf</p>
+<pre><code class="r">pacf(x)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-12" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-12.png" /> </p>
+<pre><code class="r">arima(x,order=c(1,0,0))
+</code></pre>
+
+<pre><code>## 
+## Call:
+## arima(x = x, order = c(1, 0, 0))
+## 
+## Coefficients:
+##         ar1  intercept
+##       0.905      0.713
+## s.e.  0.019      0.465
+## 
+## sigma^2 estimated as 1.01:  log likelihood = -713.1,  aic = 1432
+</code></pre>
+
+<p>What about OLS?</p>
+<pre><code class="r">x.df&lt;-ts.intersect(x, lag1x=lag(x,-1), dframe=TRUE)
+summary(lm(x~lag1x, data=x.df))
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = x ~ lag1x, data = x.df)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -3.275 -0.724 -0.007  0.725  3.390 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   0.0776     0.0477    1.63      0.1    
+## lag1x         0.9047     0.0191   47.40   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.01 on 497 degrees of freedom
+## Multiple R-squared:  0.819,  Adjusted R-squared:  0.819 
+## F-statistic: 2.25e+03 on 1 and 497 DF,  p-value: &lt;2e-16
+</code></pre>
+
+<p>Notice that the intercepts are different. Arima estimates the mean (which is then subtracted from both yt and yt-1), while OLS is estimating the intercept. You can get the OLS intercept from the arima output by taking the mean times (1-phi), which in this case is .713*.905=.78 </p>
+<p>We can simulate an MA(1) with $\theta=-.9$</p>
+<pre><code class="r">x &lt;- arima.sim(list(order=c(0,0,1), ma=-.9),n=500)
+plot.ts(x, main=expression(paste(&quot;MA(1), &quot; , theta, &quot;=-.9&quot;)))
+abline(h=0)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-15" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-15.png" /> </p>
+<p>Now lets look at an ACF</p>
+<pre><code class="r">acf(x)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-16" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-16.png" /> </p>
+<p>and the pacf</p>
+<pre><code class="r">pacf(x)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-17" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-17.png" /> <br />
+Can estimate an ARIMA model</p>
+<pre><code class="r">arima(x, order=c(0,0,1))
+</code></pre>
+
+<pre><code>## 
+## Call:
+## arima(x = x, order = c(0, 0, 1))
+## 
+## Coefficients:
+##          ma1  intercept
+##       -0.920     -0.002
+## s.e.   0.017      0.004
+## 
+## sigma^2 estimated as 1.04:  log likelihood = -720.7,  aic = 1447
+</code></pre>
+
+<p>We can simulate an MA(1) with $\theta= +.9$</p>
+<pre><code class="r">x &lt;- arima.sim(list(order=c(0,0,1), ma= .9),n=500)
+plot.ts(x, main=expression(paste(&quot;MA(1), &quot; , theta, &quot;= +.9&quot;)))
+abline(h=0)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-19" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-19.png" /> </p>
+<p>Now lets look at an ACF</p>
+<pre><code class="r">acf(x)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-20" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-20.png" /> </p>
+<p>and the pacf</p>
+<pre><code class="r">pacf(x)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-21" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-21.png" /> </p>
+<pre><code class="r">arima(x, order=c(0,0,1))
+</code></pre>
+
+<pre><code>## 
+## Call:
+## arima(x = x, order = c(0, 0, 1))
+## 
+## Coefficients:
+##         ma1  intercept
+##       0.874     -0.079
+## s.e.  0.023      0.083
+## 
+## sigma^2 estimated as 0.995:  log likelihood = -708.9,  aic = 1424
+</code></pre>
+
+<p>Now lets try something nonstationary</p>
+<pre><code class="r">x &lt;- rnorm(500) %&gt;% cumsum()
+plot.ts(x, main=expression(paste(&quot;Randow Walk, &quot; , phi, &quot;= 1&quot;)))
+abline(h=0)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-23" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-23.png" /> </p>
+<p>Now lets look at an ACF</p>
+<pre><code class="r">acf(x)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-24" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-24.png" /> </p>
+<p>and the pacf</p>
+<pre><code class="r">pacf(x)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-25" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-25.png" /> </p>
+<p>Then look at difference $\delta y$</p>
+<pre><code class="r">plot.ts(diff(x), main=expression(paste(&quot;Randow Walk (differenced), &quot; , phi, &quot;= 1&quot;)))
+abline(h=0)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-26" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-26.png" /> </p>
+<p>Now lets look at an ACF</p>
+<pre><code class="r">acf(diff(x))
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-27" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-27.png" /> </p>
+<p>and the pacf</p>
+<pre><code class="r">pacf(diff(x))
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-28" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-28.png" /> </p>
+<p>You can get the Box-Ljung statistics with</p>
+<pre><code class="r">Box.test (diff(x), lag = 1, type = &quot;Ljung&quot;)
+</code></pre>
+
+<pre><code>## 
+##  Box-Ljung test
+## 
+## data:  diff(x)
+## X-squared = 0.2127, df = 1, p-value = 0.6446
+</code></pre>
+
+<pre><code class="r">Box.test (diff(x), lag = 2, type = &quot;Ljung&quot;)
+</code></pre>
+
+<pre><code>## 
+##  Box-Ljung test
+## 
+## data:  diff(x)
+## X-squared = 5.561, df = 2, p-value = 0.06201
+</code></pre>
+
+<pre><code class="r">Box.test (diff(x), lag = 3, type = &quot;Ljung&quot;)
+</code></pre>
+
+<pre><code>## 
+##  Box-Ljung test
+## 
+## data:  diff(x)
+## X-squared = 7.255, df = 3, p-value = 0.0642
+</code></pre>
+
+<pre><code class="r">Box.test (diff(x), lag = 4, type = &quot;Ljung&quot;)
+</code></pre>
+
+<pre><code>## 
+##  Box-Ljung test
+## 
+## data:  diff(x)
+## X-squared = 10.75, df = 4, p-value = 0.02949
+</code></pre>
+
+<pre><code class="r">Box.test (diff(x), lag = 5, type = &quot;Ljung&quot;)
+</code></pre>
+
+<pre><code>## 
+##  Box-Ljung test
+## 
+## data:  diff(x)
+## X-squared = 11.33, df = 5, p-value = 0.04523
+</code></pre>
+
+<h1 id="diagnosing-time-series-the-real-world-east-lansing"><a name="user-content-diagnosing-time-series-the-real-world-east-lansing" href="#diagnosing-time-series-the-real-world-east-lansing" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Diagnosing Time Series (The Real World, East Lansing)</h1>
+<p>Now lets look at real world data. The <strong><em>MSBVAR</em></strong> package has data on conflict scores for Israel and Palestinian Authority, as well as other variables. Because we loaded the backage already, we can extract the data from the package with: </p>
+<pre><code class="r">data(BCFdata)
+</code></pre>
+
+<p>The main time series are now in an object called <code>Y</code>:</p>
+<pre><code class="r">Y[1:10,]
+</code></pre>
+
+<pre><code>##           I2P     P2I  JPI
+##  [1,] -2.5806 -0.8364 63.3
+##  [2,] -2.8823 -1.9726 66.3
+##  [3,] -1.7428 -0.4788 59.7
+##  [4,] -0.3978 -1.5743 63.3
+##  [5,] -0.9772 -1.7973 63.8
+##  [6,] -0.9365 -0.3805 60.5
+##  [7,] -1.8534 -0.5937 63.1
+##  [8,] -2.1137 -2.0378 63.6
+##  [9,] -2.7032 -1.0073 62.5
+## [10,] -1.2074 -0.5394 59.5
+</code></pre>
+
+<pre><code class="r">is.ts(Y)
+</code></pre>
+
+<pre><code>## [1] TRUE
+</code></pre>
+
+<pre><code class="r">time(Y)
+</code></pre>
+
+<pre><code>##       Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec
+## 1996                1996 1996 1996 1996 1997 1997 1997 1997 1997
+## 1997 1997 1997 1997 1997 1997 1997 1998 1998 1998 1998 1998 1998
+## 1998 1998 1998 1998 1998 1998 1998 1998 1999 1999 1999 1999 1999
+## 1999 1999 1999 1999 1999 1999 1999 2000 2000 2000 2000 2000 2000
+## 2000 2000 2000 2000 2000 2000 2000 2000 2001 2001 2001 2001 2001
+## 2001 2001 2001 2001 2001 2001 2001 2002 2002 2002 2002 2002 2002
+## 2002 2002 2002 2002 2002 2002 2002 2002 2003 2003 2003 2003 2003
+## 2003 2003 2003 2003 2003 2003 2003 2004 2004 2004 2004 2004 2004
+## 2004 2004 2004 2004 2004 2004 2004 2004 2005 2005 2005 2005 2005
+## 2005 2005 2005 2005 2005 2005 2005 2006 2006 2006 2006 2006 2006
+</code></pre>
+
+<p>We seet that this is monthly data that starts in April 1996, and ends in Dec. 2005. We have net behavior (cooperation-conflict) sent from Israel to Palestinian Authority (I2P, lower values, more conflict), Palestinian Authority to Israel (P2I, lower values, more conflict), as well as a public opinion series collected in Israel (JPI, higher values, more support for peace settlement negotiations). We have 117 observations for each series.</p>
+<p>We can plot the series</p>
+<pre><code class="r">plot(Y)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-32" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-32.png" /> </p>
+<p>Lets look at potential change in the series in Oct. 2000 (Battle of Jenin). Need a dummy variable equal to zero from Apr. 1996 to Sept. 2000, and then 1, from Oct. 2000 to Dec. 2005.</p>
+<pre><code class="r">ts1 &lt;- ts(0, start=c(1996,4), end=c(2000,9),frequency=12)
+ts2 &lt;- ts(1, start=c(2000,10), end=c(2005,12), frequency=12)
+PostJenin &lt;- ts(c(ts1,ts2), start=c(1996,4), end=c(2005,12), frequency=12)
+PostJenin
+</code></pre>
+
+<pre><code>##      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+## 1996               0   0   0   0   0   0   0   0   0
+## 1997   0   0   0   0   0   0   0   0   0   0   0   0
+## 1998   0   0   0   0   0   0   0   0   0   0   0   0
+## 1999   0   0   0   0   0   0   0   0   0   0   0   0
+## 2000   0   0   0   0   0   0   0   0   0   1   1   1
+## 2001   1   1   1   1   1   1   1   1   1   1   1   1
+## 2002   1   1   1   1   1   1   1   1   1   1   1   1
+## 2003   1   1   1   1   1   1   1   1   1   1   1   1
+## 2004   1   1   1   1   1   1   1   1   1   1   1   1
+## 2005   1   1   1   1   1   1   1   1   1   1   1   1
+</code></pre>
+
+<p>Now look at that on plot of <code>P2I</code>.</p>
+<pre><code class="r">plot(Y[,&quot;P2I&quot;])
+abline(v=c(2000,10), col=&quot;red&quot;)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-34" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-34.png" /> </p>
+<p>Diagnose the series, before the intervention we are interested in looking at.</p>
+<pre><code class="r">par(mfrow-c(2,1))
+</code></pre>
+
+<pre><code>## Error: object 'mfrow' not found
+</code></pre>
+
+<pre><code class="r">Y[,&quot;P2I&quot;] %&gt;% window(end=c(2000,9)) %&gt;% function(x) {
+    acf(x, main=&quot;P2I ACF&quot;) 
+    pacf(x, main=&quot;P2I ACF&quot;)
+    }
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-35" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-351.png" /> <img alt="plot of chunk unnamed-chunk-35" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-352.png" /> </p>
+<p>We can use OLS to estimate model with Post Jenin permanent intervention and possible gradual change. First create dataset we will use.</p>
+<pre><code class="r">data2 &lt;- ts.intersect(P2I=Y[,&quot;P2I&quot;], LagP2I=lag(Y[,&quot;P2I&quot;], k=-1), PostJenin)
+head(data2)
+</code></pre>
+
+<pre><code>##          P2I  LagP2I PostJenin
+## [1,] -1.9726 -0.8364         0
+## [2,] -0.4788 -1.9726         0
+## [3,] -1.5743 -0.4788         0
+## [4,] -1.7973 -1.5743         0
+## [5,] -0.3805 -1.7973         0
+## [6,] -0.5937 -0.3805         0
+</code></pre>
+
+<p>Now run the model.</p>
+<pre><code class="r">model1 &lt;- lm(P2I~LagP2I+PostJenin, data=data2)
+summary(model1) 
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = P2I ~ LagP2I + PostJenin, data = data2)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.0600 -0.5804 -0.0315  0.6569  2.7894 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -0.6559     0.1553   -4.22  4.9e-05 ***
+## LagP2I        0.3426     0.0866    3.96  0.00013 ***
+## PostJenin    -1.2185     0.2344   -5.20  9.0e-07 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.939 on 113 degrees of freedom
+## Multiple R-squared:  0.527,  Adjusted R-squared:  0.518 
+## F-statistic: 62.8 on 2 and 113 DF,  p-value: &lt;2e-16
+</code></pre>
+
+<p>What is estimated new equilibrium? What is estimated change in equilibrium? We need to check residuals too</p>
+<pre><code class="r">resid(model1) %&gt;% function(x) {
+    for (i in c(1:5)) {
+        print(i)
+        Box.test(x,lag=i, type=&quot;Ljung-Box&quot;) %&gt;% print()
+        }   
+    }
+</code></pre>
+
+<pre><code>## [1] 1
+## 
+##  Box-Ljung test
+## 
+## data:  x
+## X-squared = 0.0736, df = 1, p-value = 0.7862
+## 
+## [1] 2
+## 
+##  Box-Ljung test
+## 
+## data:  x
+## X-squared = 1.353, df = 2, p-value = 0.5084
+## 
+## [1] 3
+## 
+##  Box-Ljung test
+## 
+## data:  x
+## X-squared = 12.9, df = 3, p-value = 0.004849
+## 
+## [1] 4
+## 
+##  Box-Ljung test
+## 
+## data:  x
+## X-squared = 12.96, df = 4, p-value = 0.01149
+## 
+## [1] 5
+## 
+##  Box-Ljung test
+## 
+## data:  x
+## X-squared = 14.49, df = 5, p-value = 0.01277
+</code></pre>
+
+<p>Plot fitted versus actual.</p>
+<pre><code class="r">par(mfrow=c(1,1))
+ts.intersect(P2I=data2[,&quot;P2I&quot;],fitted1=ts(fitted(model1),start=start(data2),end=end(data2),frequency=12)) %&gt;%
+    function(x) {
+        plot(x[,1])
+        lines(x[,2],col=&quot;red&quot;)
+    }
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-39" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-39.png" /> </p>
+<p>Lets plot the impact.</p>
+<pre><code class="r">impact.GP &lt;- function(model) {
+    temp&lt;- matrix(c(c(1:25), 0, rep(NA,24)), ncol=2)
+    for (i in 2:25) {
+        j = i-1
+        temp[i,2] &lt;- coef(model)[2]*temp[j,2]+coef(model)[3]
+    }
+return(ts(temp[,2]))
+}  
+impact.GP(model1) %&gt;% plot(,col=&quot;orange&quot;,lwd=4)
+abline(h=0)
+</code></pre>
+
+<p><img alt="plot of chunk unnamed-chunk-40" src="/Users/michaelcolaresi/Desktop/Teaching/TimeSeries2014/Lecture5/figure/unnamed-chunk-40.png" /> </p></body></html>
