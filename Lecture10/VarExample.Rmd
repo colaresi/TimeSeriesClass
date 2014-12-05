@@ -1,0 +1,142 @@
+VAR Demonstration
+=================
+
+Two packages are very useful for VAR in R, MSBVAR and vars.  First load the MSBVAR package, and we will continue using the same data.
+
+```
+library(MSBVAR)
+data(BCFData)
+```
+
+##vars package
+
+Next load the vars library. Note that this overwrites the irf function in MSBVAR, we will deal with this later.
+
+```{r}
+library(vars)
+```
+
+We can plot the series again.
+
+```{r}
+#plot
+plot(Y)
+```
+
+If we know we want to do a VAR analysis, with these three series, then we still need to know p, the lag length to use. We can check different specifications using this command:
+
+```{r}
+#lag specification
+VARselect(Y, lag.max=15, type="const")
+```
+
+Make sure you understand the output. The AIC and BIC are most useful criterion to think about.
+
+Once we have a lag length -- 3 is a reasonable and conservative choice here for now-- we want to estimate the reduced form VAR. 
+
+```{r}
+#estimate reduced form
+
+rf.var0<-VAR(Y, p=3, type="const")
+
+summary(rf.var0)
+```
+
+We can get a nice plot of this object with:
+
+```{r}
+plot(rf.var0)
+```
+
+
+The coefficients are not of obvious interest, but the impulse response functions are.
+
+```{r}
+#IRFs
+irf(rf.var0, ortho= TRUE, boot=TRUE, ci=.95, runs=250, cumulative=FALSE) %>% plot()
+```
+
+It is importat to note that the confidence intervals are bootstapped here and need more samples.
+
+Can also do residual diagnostic tests quickly.
+
+```{r}
+#Normality test
+normality.test(rf.var0)
+
+#Serial correlation
+serial.test(rf.var0)
+```
+
+##MSBVAR package
+
+Can do similar things in the MSBVAR package, but it also extends to a greater set of models.
+
+In MSBVAR, lag selection is done by:
+
+```{r}
+#lag specification
+var.lag.specification(Y, lagmax=15)
+
+
+var.lag.specification(Y, lagmax=8)
+
+
+var.lag.specification(Y, lagmax=6)
+```
+
+A reduced form, frequentist VAR is done by:
+
+```{r}
+#Reduced form frequentist VAR
+
+rf.var1 <- reduced.form.var(Y, p=3)
+```
+
+We can access the coefficients and vcov matrix by:
+
+```{r}
+#where are coefs?
+
+#intercepts?
+rf.var1$intercept
+
+#ars?
+rf.var1$ar.coef
+
+#Betahats?
+rf.var1$Bhat
+
+#vcov
+rf.var1$vcv
+```
+
+Can also get a summary:
+
+```{r}
+#summmary
+summary(rf.var1)
+```
+
+We can plot irfs, using the MSBVAR irf function (need to look in MSBVAR namespace):
+
+```{r}
+#Check IRFs?, use MSBVAR irf function (vars has one too, same name!)
+MSBVAR::irf(rf.var1, nsteps=12) %>% plot()
+```
+
+Can change confidence intervals:
+
+```{r}
+#Try
+mc.irf(rf.var1, draws=5000, nsteps=12) %>% plot(, probs=c(.05,.95))
+```
+
+Can you interpret this?
+
+
+
+
+
+
+
